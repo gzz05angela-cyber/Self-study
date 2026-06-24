@@ -1,0 +1,43 @@
+package TestTreeComparator;
+
+
+import java.util.TreeSet;
+import java.util.Comparator;
+import java.util.Set;
+
+class BookCompare implements Comparator<Book>{
+    public int compare(Book one, Book two){
+        return one.title.compareTo(two.title);
+    }
+}
+
+class Book{
+    String title;
+    Book(String t){
+        this.title = t;
+    }
+
+    public String toString(){
+        return title;
+    }
+}
+
+public class TestTreeComparator {
+
+    public static void main(String[] args) {
+        new TestTreeComparator().go();
+    }
+    
+    public void go(){
+        Book b1 = new Book("How can I?");
+        Book b2 = new Book("Remix your Body");
+        Book b3 = new Book("Finding Emo");
+        BookCompare bookCompare = new BookCompare();
+        Set<Book> tree = new TreeSet<>(bookCompare);
+        tree.add(b1);
+        tree.add(b2);
+        tree.add(b3);
+        System.out.println(tree);
+    }
+    
+}
